@@ -38,6 +38,7 @@ const data = {
 };
 
 describe("When Events is created", () => {
+  // test vérifie que le composant Events affiche une liste de cartes d’événements lorsque le composant est créé.
   it("a list of event card is displayed", async () => {
     api.loadData = jest.fn().mockReturnValue(data);
     render(
@@ -45,9 +46,11 @@ describe("When Events is created", () => {
         <Events />
       </DataProvider>
     );
-    await screen.findByText("avril");
+    await screen.findAllByText("avril");
   });
+
   describe("and an error occured", () => {
+    // test vérifie que le composant Events affiche un message d’erreur lorsque une erreur se produit lors du chargement des données.
     it("an error message is displayed", async () => {
       api.loadData = jest.fn().mockRejectedValue();
       render(
@@ -58,6 +61,9 @@ describe("When Events is created", () => {
       expect(await screen.findByText("An error occured")).toBeInTheDocument();
     });
   });
+
+
+  // test vérifie que le composant Events affiche correctement une liste filtrée d’événements lorsqu’une catégorie est sélectionnée.
   describe("and we select a category", () => {
     it.only("an filtered list is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);
@@ -87,6 +93,7 @@ describe("When Events is created", () => {
     });
   });
 
+  // test: vérifie que le composant Events affiche correctement les détails d’un événement lorsqu’on clique dessus
   describe("and we click on an event", () => {
     it("the event detail is displayed", async () => {
       api.loadData = jest.fn().mockReturnValue(data);

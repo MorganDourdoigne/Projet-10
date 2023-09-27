@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import Slider from "./index";
 import { api, DataProvider } from "../../contexts/DataContext";
 
+// Données de test pour le Slider
 const data = {
   focus: [
     {
@@ -29,14 +30,18 @@ const data = {
 describe("When slider is created", () => {
   it("a list card is displayed", async () => {
     window.console.error = jest.fn();
+    // Simule le chargement des données de l'API
     api.loadData = jest.fn().mockReturnValue(data);
     render(
       <DataProvider>
         <Slider />
       </DataProvider>
     );
+    // Vérifier si le texte 1ere diap. est ok
     await screen.findByText("World economic forum");
+    // Vérifier si le mois 1ere diap. est ok
     await screen.findByText("janvier");
+    // Vérifier si le descritpif 1ere diap. est ok
     await screen.findByText(
       "Oeuvre à la coopération entre le secteur public et le privé."
     );

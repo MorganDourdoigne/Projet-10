@@ -1,3 +1,5 @@
+// Le test qui échoue est celui qui vérifie que le composant Events affiche
+// correctement une liste filtrée d’événements lorsqu’une catégorie est sélectionnée.
 import { fireEvent, render, screen } from "@testing-library/react";
 import { api, DataProvider } from "../../contexts/DataContext";
 import Events from "./index";
@@ -48,6 +50,7 @@ describe("When Events is created", () => {
     );
     await screen.findAllByText("avril");
   });
+  
 
   describe("and an error occured", () => {
     // test vérifie que le composant Events affiche un message d’erreur lorsque une erreur se produit lors du chargement des données.

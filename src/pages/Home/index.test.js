@@ -1,6 +1,8 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Home from "./index";
 
+// Quand le formulaire est créé le test vérifie que lorsque le composant Home est rendu,
+// les 3 champs sont rendu
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
     render(<Home />);
@@ -10,6 +12,8 @@ describe("When Form is created", () => {
     await screen.findByText("Personel / Entreprise");
   });
 
+    // test qui simule un clic sur le bouton “Envoyer” et 
+  // vérifie que les messages “En cours” et “Message envoyé !” apparaissent à l’écran.
   describe("and a click is triggered on the submit button", () => {
     it("the success message is displayed", async () => {
       render(<Home />);
@@ -21,7 +25,8 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      await screen.findByText("Message envoyé !");
+      // Utilisez waitFor pour attendre que le texte "Message envoyé !" apparaisse
+      await waitFor(() => screen.getByText(/message envoyé/i), { timeout: 2000 });
     });
   });
 

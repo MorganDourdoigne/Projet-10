@@ -12,6 +12,8 @@ const Slider = () => {
   );
   const nextCard = () => {
     setTimeout(
+      // Si l'index est inférieur à la longueur du tableau byDateDesc moins 1, incrémente l'index
+      // Sinon, réinitialiser l'index à 0 (retourner à la première diapositive)
       () => setIndex(index < byDateDesc.length - 1 ? index + 1 : 0),
       5000
     );
@@ -24,7 +26,7 @@ const Slider = () => {
       {byDateDesc?.map((event, idx) => (
         <>
           <div
-key={event.title}
+            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -38,17 +40,18 @@ key={event.title}
               </div>
             </div>
           </div>
-<div className="SlideCard__paginationContainer">
-          <div className="SlideCard__pagination">
-  {byDateDesc.map((_, radioIdx) => (
-    <input
-      key={`${event.id}`}
-      type="radio"
-      name="radio-button"
-      checked={idx === radioIdx}
-    />
-  ))}
-</div>
+          <div className="SlideCard__paginationContainer">
+            <div className="SlideCard__pagination">
+              {byDateDesc.map((_, radioIdx) => (
+                <input
+                  key={`${event.id}`}
+                  type="radio"
+                  name="radio-button"
+                  // Coche le "dot" si l'index de l'état est égal à radioIdx (manquait "index")
+                  checked={index === radioIdx}
+                 />
+              ))}
+            </div>
           </div>
         </>
       ))}

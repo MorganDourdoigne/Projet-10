@@ -34,16 +34,28 @@ describe("When Form is created", () => {
 
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
-  })
-  it("a list a people is displayed", () => {
-    // to implement
-  })
+  beforeEach(() => {
+    render(<Home />);
+  });
+
+  it("une liste d'événements est affichée", () => {
+    const eventsList = screen.getByTestId('events-list');
+    expect(eventsList).toBeInTheDocument();
+  });
+
+  it("une liste de personnes est affichée", () => {
+    const peopleList = screen.getByTestId('people-list');
+    expect(peopleList).toBeInTheDocument();
+  });
+
   it("a footer is displayed", () => {
-    // to implement
-  })
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
-  })
+    expect(screen.getByTestId('footer')).toBeInTheDocument();
+  });
+
+  it("an event card, with the last event, is displayed", async () => {
+    await waitFor(() => {
+      const lastEventCard = screen.getByTestId('last-event-card');
+      expect(lastEventCard).toBeInTheDocument();
+    });
+  });
 });

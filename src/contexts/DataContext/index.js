@@ -5,6 +5,7 @@ import {
   useContext,
   useEffect,
   useState,
+  useMemo, // n'oubliez pas d'importer useMemo
 } from "react";
 
 const DataContext = createContext({});
@@ -19,26 +20,32 @@ export const api = {
 export const DataProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [last, setLast] = useState(null);
+  
   const getData = useCallback(async () => {
     try {
-      setData(await api.loadData());
+      const loadedData = await api.loadData();
+      setData(loadedData);
+      setLast(loadedData.events[loadedData.events.length - 1]); // 'last' est défini comme le dernier événement
     } catch (err) {
       setError(err);
     }
   }, []);
+  
   useEffect(() => {
     if (data) return;
     getData();
   });
+
+  // Utilisez useMemo pour mémoriser l'objet passé à value
+  const value = useMemo(() => ({
+    data,
+    last,
+    error,
+  }), [data, last, error]);
   
   return (
-    <DataContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{
-        data,
-        error,
-      }}
-    >
+    <DataContext.Provider value={value}>
       {children}
     </DataContext.Provider>
   );

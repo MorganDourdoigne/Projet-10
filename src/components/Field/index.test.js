@@ -61,4 +61,18 @@ describe("When a field is created", () => {
       expect(fieldElement.type).toEqual("text");
     });
   });
+  describe("When a field is required", () => {
+    it("it is invalid if empty", () => {
+      render(<Field name="test" required />);
+      const fieldElement = screen.getByRole("textbox");
+      expect(fieldElement.checkValidity()).toBe(false);
+    });
+    it("it is valid if not empty", () => {
+      render(<Field name="test" required />);
+      const fieldElement = screen.getByRole("textbox");
+      fireEvent.change(fieldElement, { target: { value: "test" } });
+      expect(fieldElement.checkValidity()).toBe(true);
+    });
+  });
+  
 });

@@ -10,6 +10,7 @@ export const FIELD_TYPES = {
 
 const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder, required }) => {
   let component;
+  const errorMessage = `N’oubliez pas de remplir ce champ.`;
   switch (type) {
     case FIELD_TYPES.INPUT_TEXT:
       component = (
@@ -18,6 +19,12 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder, requir
           name={name}
           placeholder={placeholder}
           required={required}
+          onInvalid={(e) => {
+            e.target.setCustomValidity(errorMessage);
+          }}
+          onInput={(e) => {
+            e.target.setCustomValidity("");
+          }}
           data-testid="field-testid"
         />
       );
@@ -29,12 +36,30 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder, requir
           name={name}
           placeholder={placeholder}
           required={required}
+          onInvalid={(e) => {
+            e.target.setCustomValidity(errorMessage);
+          }}
+          onInput={(e) => {
+            e.target.setCustomValidity("");
+          }}
           data-testid="field-testid"
         />
       );
       break;
     case FIELD_TYPES.TEXTAREA:
-      component = <textarea name={name} required={required} data-testid="field-testid" />;
+      component = (
+        <textarea
+          name={name}
+          required={required}
+          onInvalid={(e) => {
+            e.target.setCustomValidity(errorMessage);
+          }}
+          onInput={(e) => {
+            e.target.setCustomValidity("");
+          }}
+          data-testid="field-testid"
+        />
+      );
       break;
     default:
       component = (
@@ -43,6 +68,12 @@ const Field = ({ type = FIELD_TYPES.INPUT_TEXT, label, name, placeholder, requir
           name={name}
           placeholder={placeholder}
           required={required}
+          onInvalid={(e) => {
+            e.target.setCustomValidity(errorMessage);
+          }}
+          onInput={(e) => {
+            e.target.setCustomValidity("");
+          }}
           data-testid="field-testid"
         />
       );

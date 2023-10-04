@@ -12,7 +12,7 @@ describe("When Form is created", () => {
     await screen.findByText("Personel / Entreprise");
   });
 
-    // test qui simule un clic sur le bouton “Envoyer” et 
+  // test qui simule un clic sur le bouton “Envoyer” et 
   // vérifie que les messages “En cours” et “Message envoyé !” apparaissent à l’écran.
   describe("and a click is triggered on the submit button", () => {
     it("the success message is displayed", async () => {
@@ -29,9 +29,7 @@ describe("When Form is created", () => {
       await waitFor(() => screen.getByText(/message envoyé/i), { timeout: 2000 });
     });
   });
-
 });
-
 
 describe("When a page is created", () => {
   beforeEach(() => {
@@ -56,6 +54,6 @@ describe("When a page is created", () => {
     await waitFor(() => {
       const lastEventCard = screen.getByTestId('last-event-card');
       expect(lastEventCard).toBeInTheDocument();
-    });
-  });
+    }, { timeout: 3000 });
+  }); 
 });

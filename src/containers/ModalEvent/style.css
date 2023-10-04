@@ -1,6 +1,6 @@
 .ModalEvent {
   font-family: "Manrope", sans-serif;
-  overflow: hidden;
+  overflow-y: auto;
   width: 450px;
   position: relative;
   min-height: 669px;

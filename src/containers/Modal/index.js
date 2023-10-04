@@ -1,10 +1,20 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react"; 
 import Icon from "../../components/Icon";
 import "./style.scss";
 
 const Modal = ({ opened, Content, children }) => {
   const [isOpened, setIsOpened] = useState(opened);
+
+  // Ajoutez ce useEffect
+  useEffect(() => {
+    if (isOpened) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpened]);
+
   return (
     <>
       {children({ isOpened, setIsOpened })}

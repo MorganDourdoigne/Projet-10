@@ -45,4 +45,7 @@ describe("When a event card is created", () => {
       expect(cardElement.className.includes("EventCard--small")).toEqual(true);
     });
   });
+
+
+  
 });

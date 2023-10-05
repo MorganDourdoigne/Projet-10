@@ -12,7 +12,7 @@ describe("When Form is created", () => {
     await screen.findByText("Personel / Entreprise");
   });
 
-  // test qui simule un clic sur le bouton “Envoyer” et 
+  // test qui simule un clic sur le bouton “Envoyer” et
   // vérifie que les messages “En cours” et “Message envoyé !” apparaissent à l’écran.
   describe("and a click is triggered on the submit button", () => {
     it("the success message is displayed", async () => {
@@ -26,7 +26,9 @@ describe("When Form is created", () => {
       );
       await screen.findByText("En cours");
       // Utilisez waitFor pour attendre que le texte "Message envoyé !" apparaisse
-      await waitFor(() => screen.getByText(/message envoyé/i), { timeout: 2000 });
+      await waitFor(() => screen.getByText(/message envoyé/i), {
+        timeout: 2000,
+      });
     });
   });
 });
@@ -37,23 +39,26 @@ describe("When a page is created", () => {
   });
 
   it("une liste d'événements est affichée", () => {
-    const eventsList = screen.getByTestId('events-list');
+    const eventsList = screen.getByTestId("events-list");
     expect(eventsList).toBeInTheDocument();
   });
 
   it("une liste de personnes est affichée", () => {
-    const peopleList = screen.getByTestId('people-list');
+    const peopleList = screen.getByTestId("people-list");
     expect(peopleList).toBeInTheDocument();
   });
 
   it("a footer is displayed", () => {
-    expect(screen.getByTestId('footer')).toBeInTheDocument();
+    expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
   it("an event card, with the last event, is displayed", async () => {
-    await waitFor(() => {
-      const lastEventCard = screen.getByTestId('last-event-card');
-      expect(lastEventCard).toBeInTheDocument();
-    }, { timeout: 3000 });
-  }); 
+    await waitFor(
+      () => {
+        const lastEventCard = screen.getByTestId("last-event-card");
+        expect(lastEventCard).toBeInTheDocument();
+      },
+      { timeout: 3000 }
+    );
+  });
 });

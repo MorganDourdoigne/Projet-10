@@ -3,6 +3,15 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
+const extractMonth = (periode) => {
+  if (!periode) {
+    return '';
+  }
+  const months = ['JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'];
+  return months.find(month => periode.toUpperCase().includes(month)) || '';
+};
+
+
 const EventCard = ({
   imageSrc,
   imageAlt,
@@ -23,7 +32,7 @@ const EventCard = ({
     </div>
     <div className="EventCard__descriptionContainer">
       <div className="EventCard__title">{title}</div>
-      <div className="EventCard__month">{periode}</div>
+      <div className="EventCard__month">{extractMonth(periode)}</div>
     </div>
   </div>
 );
@@ -40,6 +49,6 @@ EventCard.propTypes = {
 EventCard.defaultProps = {
   imageAlt: "image",
   small: false,
-  }
+}
 
 export default EventCard;

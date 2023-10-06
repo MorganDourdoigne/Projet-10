@@ -1,8 +1,10 @@
-/* eslint-disable no-console */
+import React, { useState } from "react";
 import Menu from "../../containers/Menu";
 import ServiceCard from "../../components/ServiceCard";
 import EventCard from "../../components/EventCard";
 import PeopleCard from "../../components/PeopleCard";
+import Modal from "../../containers/Modal";
+import ModalEvent from "../../containers/ModalEvent";
 
 import "./style.scss";
 import EventList from "../../containers/Events";
@@ -10,13 +12,13 @@ import Slider from "../../containers/Slider";
 import Logo from "../../components/Logo";
 import Icon from "../../components/Icon";
 import Form from "../../containers/Form";
-import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const { last } = useData();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-   return (
+  return (
     <>
       <header>
         <Menu />
@@ -123,16 +125,24 @@ const Page = () => {
       </main>
       <footer className="row" data-testid="footer">
         <div className="col presta">
-        <h3>Notre dernière prestation</h3>
-        {last && last.cover && last.title && last.date && last.type && (
-  <EventCard
-    data-testid="last-event-card"
-    imageSrc={last.cover}
-    title={last.title}
-    periode={(last.periode)}
-    label={last.type}
-  />
-)}
+          <h3>Notre dernière prestation</h3>
+          {last && last.cover && last.title && last.date && last.type && (
+            <Modal opened={isModalOpen} Content={<ModalEvent event={last} />}>
+              {({ setIsOpened }) => (
+                <EventCard
+                  data-testid="last-event-card"
+                  imageSrc={last.cover}
+                  title={last.title}
+                  periode={last.periode}
+                  label={last.type}
+                  onClick={() => {
+                    setIsOpened(true);
+                    setIsModalOpen(true);
+                  }}
+                />
+              )}
+            </Modal>
+          )}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>

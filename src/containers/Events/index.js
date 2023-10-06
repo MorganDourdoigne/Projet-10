@@ -6,6 +6,7 @@ import Modal from "../Modal";
 import ModalEvent from "../ModalEvent";
 
 
+
 import "./style.css";
 
 const PER_PAGE = 9;

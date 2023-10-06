@@ -20,7 +20,8 @@ describe("When a event card is created", () => {
         title="test event"
         label="test label"
         date={new Date("2022-04-01")}
-      />
+        periode="avril"
+              />
     );
     const titleElement = screen.getByText(/test event/);
     const monthElement = screen.getByText(/avril/);

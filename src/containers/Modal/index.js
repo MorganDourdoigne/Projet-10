@@ -6,7 +6,7 @@ import "./style.scss";
 const Modal = ({ opened, Content, children }) => {
   const [isOpened, setIsOpened] = useState(opened);
 
-  // Ajoutez ce useEffect
+// Ajoutez ce useEffect
   useEffect(() => {
     if (isOpened) {
       document.body.style.overflow = 'hidden';

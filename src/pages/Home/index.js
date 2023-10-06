@@ -16,7 +16,7 @@ import { useData } from "../../contexts/DataContext";
 const Page = () => {
   const { last } = useData();
 
-  return (
+   return (
     <>
       <header>
         <Menu />
@@ -123,16 +123,16 @@ const Page = () => {
       </main>
       <footer className="row" data-testid="footer">
         <div className="col presta">
-          <h3>Notre dernière prestation</h3>
-          {last && last.cover && last.title && last.date && (
-            <EventCard
-              data-testid="last-event-card"
-              imageSrc={last.cover}
-              title={last.title}
-              periode={(last.periode)}
-              label={last.label}
-            />
-          )}
+        <h3>Notre dernière prestation</h3>
+        {last && last.cover && last.title && last.date && last.type && (
+  <EventCard
+    data-testid="last-event-card"
+    imageSrc={last.cover}
+    title={last.title}
+    periode={(last.periode)}
+    label={last.type}
+  />
+)}
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>

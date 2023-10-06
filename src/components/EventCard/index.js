@@ -12,7 +12,7 @@ const EventCard = ({
   periode,
   ...props
 }) => (
-     <div
+       <div
     data-testid="card-testid"
     className={`EventCard${small ? " EventCard--small" : ""}`}
     {...props}

@@ -61,12 +61,16 @@ describe("When a field is created", () => {
       expect(fieldElement.type).toEqual("text");
     });
   });
+
   describe("When a field is required", () => {
+    // Ce test vérifie que si un champ est requis mais vide, il est considéré comme invalide
     it("it is invalid if empty", () => {
       render(<Field name="test" required />);
       const fieldElement = screen.getByRole("textbox");
       expect(fieldElement.checkValidity()).toBe(false);
     });
+
+    // Ce test vérifie que si un champ est requis et non vide, il est considéré comme valide
     it("it is valid if not empty", () => {
       render(<Field name="test" required />);
       const fieldElement = screen.getByRole("textbox");
@@ -74,5 +78,5 @@ describe("When a field is created", () => {
       expect(fieldElement.checkValidity()).toBe(true);
     });
   });
-  
+
 });

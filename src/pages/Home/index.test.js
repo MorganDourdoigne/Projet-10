@@ -55,9 +55,9 @@ describe("When a page is created", () => {
   it("an event card, with the last event, is displayed", async () => {
     await waitFor(
       () => {
-      const lastEventCard = screen.getByTestId("last-event-card");
-      expect(lastEventCard).toBeInTheDocument();
-    },
+        const lastEventCard = screen.getByTestId("last-event-card");
+        expect(lastEventCard).toBeInTheDocument();
+      },
       { timeout: 3000 }
     );
   });

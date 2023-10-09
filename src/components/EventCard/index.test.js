@@ -18,11 +18,11 @@ describe("When a event card is created", () => {
         imageAlt="image-alt-text"
         title="test event"
         label="test label"
-        periode="avril"
+        periode="AVRIL"
       />
     );
     const titleElement = screen.getByText(/test event/);
-    const monthElement = screen.getByText(/avril/);
+    const monthElement = screen.getByText(/AVRIL/);
     const labelElement = screen.getByText(/test label/);
     expect(titleElement).toBeInTheDocument();
     expect(labelElement).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("When a event card is created", () => {
           imageAlt="image-alt-text"
           title="test event"
           label="test label"
-          periode="avril" 
+          periode="AVRIl" 
           small
         />
       );

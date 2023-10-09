@@ -36,6 +36,7 @@ describe("When a event card is created", () => {
           imageAlt="image-alt-text"
           title="test event"
           label="test label"
+          periode="avril" 
           small
         />
       );

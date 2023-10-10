@@ -52,13 +52,14 @@ describe("When a page is created", () => {
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
-  it("an event card, with the last event, is displayed", async () => {
-    await waitFor(
+  it("an event card, with the last event, is displayed", async () => { 
+          await waitFor(
       () => {
         const lastEventCard = screen.getByTestId("last-event-card");
-        expect(lastEventCard).toBeInTheDocument();
-      },
+                expect(lastEventCard).toBeInTheDocument();
+              },
       { timeout: 3000 }
     );
   });
 });
+ 

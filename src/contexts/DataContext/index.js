@@ -25,8 +25,11 @@ export const DataProvider = ({ children }) => {
   const getData = useCallback(async () => {
     try {
       const loadedData = await api.loadData();
-      setData(loadedData);
-      setLast(loadedData.events[loadedData.events.length - 1]); // 'last' est défini comme le dernier événement
+      // Triez les événements par date en ordre décroissant
+      const sortedEvents = loadedData.events.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setData({ ...loadedData, events: sortedEvents });
+      // 'last' est maintenant l'événement avec la date la plus récente
+      setLast(sortedEvents[0]);
     } catch (err) {
       setError(err);
     }

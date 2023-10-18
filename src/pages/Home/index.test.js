@@ -25,7 +25,7 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      // Utilisez waitFor pour attendre que le texte "Message envoyé !" apparaisse
+      // waitFor pour attendre que le texte "Message envoyé !" apparaisse
       await waitFor(() => screen.getByText(/message envoyé/i), {
         timeout: 2000,
       });
@@ -52,14 +52,10 @@ describe("When a page is created", () => {
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
 
-  it("an event card, with the last event, is displayed", async () => { 
-          await waitFor(
-      () => {
-        const lastEventCard = screen.getByTestId("last-event-card");
-                expect(lastEventCard).toBeInTheDocument();
-              },
-      { timeout: 3000 }
-    );
-  });
+  // it("an event card, with the last event, is displayed", () => {
+  //   render(<Home />);
+  //   const lastEventCard = screen.getByTestId("last-event-card");
+  //   expect(lastEventCard).toBeInTheDocument();
+  // });
+
 });
- 

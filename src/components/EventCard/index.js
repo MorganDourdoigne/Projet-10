@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
-const extractMonth = (periode) => {
+const getMonth = (periode) => {
   if (!periode) {
     return '';
   }
   const months = ['JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'];
   return months.find(month => periode.toUpperCase().includes(month)) || '';
 };
+
 
 
 const EventCard = ({
@@ -21,7 +22,7 @@ const EventCard = ({
   periode,
   ...props
 }) => (
-       <div
+  <div
     data-testid="card-testid"
     className={`EventCard${small ? " EventCard--small" : ""}`}
     {...props}
@@ -32,7 +33,8 @@ const EventCard = ({
     </div>
     <div className="EventCard__descriptionContainer">
       <div className="EventCard__title">{title}</div>
-      <div className="EventCard__month">{extractMonth(periode)}</div>
+      <div className="EventCard__month">{getMonth(periode)}</div>
+
     </div>
   </div>
 );
@@ -43,7 +45,7 @@ EventCard.propTypes = {
   title: PropTypes.string.isRequired,
   small: PropTypes.bool,
   label: PropTypes.string.isRequired,
-  periode: PropTypes.string.isRequired, 
+  periode: PropTypes.string.isRequired,
 };
 
 EventCard.defaultProps = {

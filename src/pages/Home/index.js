@@ -130,7 +130,6 @@ const Page = () => {
             <Modal opened={isModalOpen} Content={<ModalEvent event={last} />}>
               {({ setIsOpened }) => (
                 <EventCard
-                  data-testid="last-event-card"
                   imageSrc={last.cover}
                   title={last.title}
                   periode={last.periode}

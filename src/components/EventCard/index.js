@@ -5,13 +5,24 @@ import "./style.scss";
 
 const getMonth = (periode) => {
   if (!periode) {
-    return '';
+    return "";
   }
-  const months = ['JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'];
-  return months.find(month => periode.toUpperCase().includes(month)) || '';
+  const months = [
+    "JANVIER",
+    "FÉVRIER",
+    "MARS",
+    "AVRIL",
+    "MAI",
+    "JUIN",
+    "JUILLET",
+    "AOÛT",
+    "SEPTEMBRE",
+    "OCTOBRE",
+    "NOVEMBRE",
+    "DÉCEMBRE",
+  ];
+  return months.find((month) => periode.toUpperCase().includes(month)) || "";
 };
-
-
 
 const EventCard = ({
   imageSrc,
@@ -34,7 +45,6 @@ const EventCard = ({
     <div className="EventCard__descriptionContainer">
       <div className="EventCard__title">{title}</div>
       <div className="EventCard__month">{getMonth(periode)}</div>
-
     </div>
   </div>
 );
@@ -46,7 +56,7 @@ EventCard.propTypes = {
   small: PropTypes.bool,
   label: PropTypes.string.isRequired,
   periode: PropTypes.string.isRequired,
-};
+  };
 
 EventCard.defaultProps = {
   imageAlt: "image",

@@ -51,11 +51,4 @@ describe("When a page is created", () => {
   it("a footer is displayed", () => {
     expect(screen.getByTestId("footer")).toBeInTheDocument();
   });
-
-  // it("an event card, with the last event, is displayed", () => {
-  //   render(<Home />);
-  //   const lastEventCard = screen.getByTestId("last-event-card");
-  //   expect(lastEventCard).toBeInTheDocument();
-  // });
-
 });
